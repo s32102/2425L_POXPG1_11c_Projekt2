@@ -8,6 +8,8 @@ public class PlayerScript : MonoBehaviour
     public float runSpeed = 5;
     public float jumpForce = 300;
     public Rigidbody2D rb;
+
+    public ground_checker groundChecker;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -28,9 +30,10 @@ public class PlayerScript : MonoBehaviour
 
         }
        
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && groundChecker.isGrounded)
         {
             rb.AddForce(new Vector2(0, jumpForce));
         }
     }
+   
 }
