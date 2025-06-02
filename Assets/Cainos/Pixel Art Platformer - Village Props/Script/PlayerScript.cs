@@ -8,16 +8,19 @@ public class PlayerScript : MonoBehaviour
     public float runSpeed = 5;
     public float jumpForce = 300;
     public Rigidbody2D rb;
+    public Pkayer_health health;
 
     public ground_checker groundChecker;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        health = GetComponent<Pkayer_health>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (health.isDead) return;
         float moveInput = Input.GetAxis("Horizontal");
         //Debug.Log($"Input value: {moveInput}");
         if(Input.GetKey(KeyCode.LeftShift))
