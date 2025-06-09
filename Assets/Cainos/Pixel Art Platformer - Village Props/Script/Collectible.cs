@@ -13,9 +13,11 @@ public class Collectible : MonoBehaviour
         }
 
         //TODO send info to Player
-        Inventiory playerInventory = null;
-
-        playerInventory = collision.gameObject.GetComponent<Inventiory>();
+        Inventiory playerInventory = collision.gameObject.GetComponent<Inventiory>();
+        if (playerInventory != null)
+        {
+            playerInventory.AddCollectible();
+        }
 
         Destroy(gameObject);
     }
