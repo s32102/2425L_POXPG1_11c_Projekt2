@@ -10,6 +10,11 @@ public class Inventiory : MonoBehaviour
 
     public TextMeshProUGUI collectibleText;
 
+    private void Start()
+    {
+        collectibleText.text = "zebrano: 0";
+    }
+
     public void AddCollectible()
     {
         collectibleCount++;
