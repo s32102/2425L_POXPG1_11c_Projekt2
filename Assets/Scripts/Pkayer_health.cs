@@ -10,12 +10,28 @@ public class Pkayer_health : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI healthText;
 
+    [SerializeField] private Transform spawnPoint;
+
     public bool isDead = false;
+    private Inventiory inventory;
+
+
 
     private void Start()
     {
         UpdateHealthText();
+
+        inventory = GetComponent<Inventiory>();
     }
+
+    private void Update()
+    {
+        if (transform.position.y < -6f)
+        {
+            Invoke(nameof(Respawn), 2f);
+        }
+    }
+
 
     public void TakeDamage(float damage)
     {
@@ -31,6 +47,7 @@ public class Pkayer_health : MonoBehaviour
         if (health == 0)
         {
             isDead = true;
+            Invoke(nameof(Respawn), 5f);
         }
 
         UpdateHealthText();
@@ -39,6 +56,18 @@ public class Pkayer_health : MonoBehaviour
     private void UpdateHealthText()
     {
         healthText.text = "zdrowie: " + health.ToString("0");
+    }
+
+    private void Respawn()
+    {
+        health = maxHealth;
+        UpdateHealthText();
+
+        inventory.ResetCollectibles();
+
+        transform.position = spawnPoint.position;
+
+        isDead = false;
     }
 
 }

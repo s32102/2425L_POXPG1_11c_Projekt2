@@ -29,5 +29,11 @@ public class Inventiory : MonoBehaviour
         }
     }
     //TODO counter for collectibles
+    public void ResetCollectibles()
+    {
+        collectibleCount = 0;
+        collectibleText.text = "zebrano: 0";
+    }
+
 
 }
