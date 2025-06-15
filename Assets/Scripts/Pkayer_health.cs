@@ -15,6 +15,8 @@ public class Pkayer_health : MonoBehaviour
     public bool isDead = false;
     private Inventiory inventory;
 
+    private Animator animator;
+
 
 
     private void Start()
@@ -22,6 +24,7 @@ public class Pkayer_health : MonoBehaviour
         UpdateHealthText();
 
         inventory = GetComponent<Inventiory>();
+        animator = GetComponent<Animator>();
     }
 
     private void Update()
@@ -47,6 +50,7 @@ public class Pkayer_health : MonoBehaviour
         if (health == 0)
         {
             isDead = true;
+            animator.SetBool("IsDead", true);
             Invoke(nameof(Respawn), 5f);
         }
 
@@ -66,6 +70,8 @@ public class Pkayer_health : MonoBehaviour
         inventory.ResetCollectibles();
 
         transform.position = spawnPoint.position;
+
+        animator.SetBool("IsDead", false);
 
         isDead = false;
     }

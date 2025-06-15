@@ -10,11 +10,14 @@ public class PlayerScript : MonoBehaviour
     public Rigidbody2D rb;
     public Pkayer_health health;
 
+    private Animator animator;
+
     public ground_checker groundChecker;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         health = GetComponent<Pkayer_health>();
+         animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -22,8 +25,9 @@ public class PlayerScript : MonoBehaviour
     {
         if (health.isDead) return;
         float moveInput = Input.GetAxis("Horizontal");
+        animator.SetBool("IsRunning", Mathf.Abs(moveInput) > 0.1f);
         //Debug.Log($"Input value: {moveInput}");
-        if(Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetKey(KeyCode.LeftShift))
         {
             rb.velocity = new Vector2(moveInput * runSpeed, rb.velocity.y);
         }
