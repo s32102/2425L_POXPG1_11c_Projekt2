@@ -50,7 +50,7 @@ public class Pkayer_health : MonoBehaviour
         if (health == 0)
         {
             isDead = true;
-            animator.SetBool("IsDead", true);
+            animator.SetBool("isDead", true);
             Invoke(nameof(Respawn), 5f);
         }
 
@@ -71,7 +71,7 @@ public class Pkayer_health : MonoBehaviour
 
         transform.position = spawnPoint.position;
 
-        animator.SetBool("IsDead", false);
+        animator.SetBool("isDead", false);
 
         isDead = false;
     }

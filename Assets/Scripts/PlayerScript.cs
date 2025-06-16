@@ -25,7 +25,7 @@ public class PlayerScript : MonoBehaviour
     {
         if (health.isDead) return;
         float moveInput = Input.GetAxis("Horizontal");
-        animator.SetBool("IsRunning", Mathf.Abs(moveInput) > 0.1f);
+        animator.SetBool("isRunning", Mathf.Abs(moveInput) > 0.1f);
         //Debug.Log($"Input value: {moveInput}");
         if (Input.GetKey(KeyCode.LeftShift))
         {
